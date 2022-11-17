@@ -26,5 +26,9 @@ gallery.addEventListener("click", getBigImg);
 
 function getBigImg(e) {
   e.preventDefault();
+  console.log(e.target.nodeName);
+  if (e.target.nodeName !== "A") {
+    return;
+  }
 }
 console.log(galleryItems);
