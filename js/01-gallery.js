@@ -29,13 +29,27 @@ function getBigImg(e) {
   const imgUrlOriganal = e.target.dataset.source;
   console.log(imgUrlOriganal);
 
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
     <div class="modal">
     <img src="${imgUrlOriganal}" width="800" height="600">
     <a>Close</a>
     </div>
-`);
-
+`,
+    {
+      onShow: () => {
+        document.addEventListener("keyup", onEscClose);
+      },
+      onClose: () => {
+        document.removeEventListener("keyup", onEscClose);
+      },
+    }
+  );
+  function onEscClose(evt) {
+    if (evt.key === "Escape") {
+      instance.close();
+    }
+  }
   instance.show();
 }
 console.log(galleryItems);
