@@ -38,4 +38,4 @@ function getBigImg(e) {
 
   instance.show();
 }
-// console.log(galleryItems);
+console.log(galleryItems);
